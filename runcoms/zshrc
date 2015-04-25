@@ -11,3 +11,40 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+HISTFILE=~/.histfile
+HISTSIZE=1000000
+SAVEHIST=1000000
+setopt INC_APPEND_HISTORY HIST_IGNORE_DUPS HIST_VERIFY
+unsetopt SHARE_HISTORY
+
+PATH=$PATH:/home/ug/.cabal/bin
+
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+bindkey '^?' backward-delete-char
+bindkey '^[OH' beginning-of-line
+bindkey '^[OF' end-of-line
+bindkey '[3~' delete-char
+bindkey 'OA' up-line-or-history
+bindkey 'OB' down-line-or-history
+
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/devel
+source /usr/local/bin/virtualenvwrapper.sh
+
+pp() {
+  cd /home/ug/Dropbox/papers/$1
+  ls -ltr
+}
+
+texon() {
+  cd /home/ug/c/math/tex/$1
+  hg st
+  ls -ltr *.tex
+}
+
+alias task='nocorrect task'
+SAGE_BROWSER="/usr/bin/firefox" 
+
