@@ -48,3 +48,6 @@ texon() {
 alias task='nocorrect task'
 SAGE_BROWSER="/usr/bin/firefox" 
 
+VISUAL=vim
+EDITOR="$VISUAL"
+
